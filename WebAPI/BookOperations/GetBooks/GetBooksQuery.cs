@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Common;
 using WebAPI.DbOperations;
@@ -10,25 +11,18 @@ namespace WebAPI.BookOperations.GetBooks
     public class GetBooksQuery
     {
         private readonly BookStoreDbContext _context;
-        public GetBooksQuery(BookStoreDbContext context)
+        private readonly IMapper _mapper;
+        public GetBooksQuery(BookStoreDbContext context, IMapper mapper)
         {
-            _context = context;   
+            _context = context;
+            _mapper = mapper;
         }
 
         public List<BooksViewModel> Handle()
         {
             var bookList = _context.Books.OrderBy(x => x.Id).ToList();
-            List<BooksViewModel> vm = new List<BooksViewModel>();
-            foreach(var book in bookList)
-            {
-                vm.Add(new BooksViewModel() 
-                {
-                   Title = book.Title,
-                   PageCount = book.PageCount,
-                   PublishDate = book.PublishDate.Date.ToString("dd/MM/yyyy"),
-                   Genre = ((GenreEnum)book.GenreId).ToString()
-                });
-            }
+            List<BooksViewModel> vm = _mapper.Map<List<BooksViewModel>>(bookList);
+           
             return vm;
         }
     }
