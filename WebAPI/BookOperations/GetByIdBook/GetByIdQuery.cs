@@ -10,14 +10,15 @@ namespace WebAPI.BookOperations.GetBooks
     public class GetByIdQuery
     {
         private readonly BookStoreDbContext _context;
+        public int BookId;
         public GetByIdQuery(BookStoreDbContext context)
         {
             _context = context;
         }
 
-        public BookViewModel Handle(int id)
+        public BookViewModel Handle()
         {
-            var book = _context.Books.FirstOrDefault(x => x.Id == id);
+            var book = _context.Books.FirstOrDefault(x => x.Id == BookId);
             if (book is null)
                 throw new InvalidOperationException("Kitap bulunamadı!");
 

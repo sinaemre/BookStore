@@ -10,15 +10,16 @@ namespace WebAPI.BookOperations.DeleteBook
     public class DeleteBookCommand
     {
         private readonly BookStoreDbContext _context;
+        public int BookId;
         public DeleteBookCommand(BookStoreDbContext context)
         {
             _context = context;
         }
 
 
-        public void Handle(int id)
+        public void Handle()
         {
-            var book = _context.Books.FirstOrDefault(x => x.Id == id);
+            var book = _context.Books.FirstOrDefault(x => x.Id == BookId);
             if (book is null)
                 throw new InvalidOperationException("Kitap bulunamadı!");
             

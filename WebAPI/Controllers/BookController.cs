@@ -8,6 +8,7 @@ using WebAPI.BookOperations.GetBooks;
 using WebAPI.BookOperations.UpdateBook;
 using WebAPI.DbOperations;
 using static WebAPI.BookOperations.CreateBook.CreateBookCommand;
+using static WebAPI.BookOperations.GetBooks.GetByIdQuery;
 using static WebAPI.BookOperations.UpdateBook.UpdateBookCommand;
 
 namespace WebAPI.AddControllers
@@ -33,16 +34,19 @@ namespace WebAPI.AddControllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            GetByIdQuery query = new GetByIdQuery(_context);
+            BookViewModel result;
             try
             {
-                var result = query.Handle(id);
-                return Ok(result);
+               GetByIdQuery query = new GetByIdQuery(_context);
+                query.BookId = id;
+                result = query.Handle();
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
+            
+            return Ok(result);
         }
 
         [HttpPost]
@@ -66,11 +70,12 @@ namespace WebAPI.AddControllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] UpdateBookModel updatedBook)
         {
-            UpdateBookCommand command = new UpdateBookCommand(_context);
             try
             {
+                UpdateBookCommand command = new UpdateBookCommand(_context);
                 command.Model = updatedBook;
-                command.Handle(id);
+                command.BookId = id;
+                command.Handle();
             }
             catch (Exception ex)
             {
@@ -83,10 +88,11 @@ namespace WebAPI.AddControllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            DeleteBookCommand command = new DeleteBookCommand(_context);
             try
             {
-                command.Handle(id);
+                DeleteBookCommand command = new DeleteBookCommand(_context);
+                command.BookId = id;
+                command.Handle();
             }
             catch (Exception ex)
             {
