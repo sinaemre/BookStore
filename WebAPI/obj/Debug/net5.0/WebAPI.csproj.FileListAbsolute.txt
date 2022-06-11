@@ -37,3 +37,4 @@ C:\Users\snabk\source\repos\BookStore\WebAPI\bin\Debug\net5.0\Microsoft.Extensio
 C:\Users\snabk\source\repos\BookStore\WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 C:\Users\snabk\source\repos\BookStore\WebAPI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\snabk\source\repos\BookStore\WebAPI\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\snabk\source\repos\BookStore\WebAPI\bin\Debug\net5.0\FluentValidation.dll
