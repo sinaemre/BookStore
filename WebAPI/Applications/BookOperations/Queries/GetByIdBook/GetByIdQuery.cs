@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Common;
 using WebAPI.DbOperations;
+using WebAPI.Entities;
 
-namespace WebAPI.BookOperations.GetBooks
+namespace WebAPI.Applications.BookOperations.Queries.GetBooks
 {
     public class GetByIdQuery
     {
@@ -21,7 +23,7 @@ namespace WebAPI.BookOperations.GetBooks
 
         public BookViewModel Handle()
         {
-            var book = _context.Books.FirstOrDefault(x => x.Id == BookId);
+            var book = _context.Books.Include(x => x.Genre).FirstOrDefault(x => x.Id == BookId);
             if (book is null)
                 throw new InvalidOperationException("Kitap bulunamadı!");
 

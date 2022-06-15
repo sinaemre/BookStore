@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI.Common;
 using WebAPI.DbOperations;
 
-namespace WebAPI.BookOperations.UpdateBook
+namespace WebAPI.Applications.BookOperations.Commands.UpdateBook
 {
     public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
     {

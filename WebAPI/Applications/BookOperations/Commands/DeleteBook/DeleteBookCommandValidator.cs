@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI.Common;
 using WebAPI.DbOperations;
 
-namespace WebAPI.BookOperations.DeleteBook
+namespace WebAPI.Applications.BookOperations.Commands.DeleteBook
 {
     public class DeleteBookCommandValidator : AbstractValidator<DeleteBookCommand>
     {

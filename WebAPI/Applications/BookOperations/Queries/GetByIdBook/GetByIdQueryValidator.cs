@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI.Common;
 using WebAPI.DbOperations;
 
-namespace WebAPI.BookOperations.GetBooks
+namespace WebAPI.Applications.BookOperations.Queries.GetBooks
 {
     public class GetByIdQueryValidator : AbstractValidator<GetByIdQuery>
     {

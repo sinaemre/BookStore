@@ -1,12 +1,13 @@
-    using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Common;
 using WebAPI.DbOperations;
+using WebAPI.Entities;
 
-namespace WebAPI.BookOperations.CreateBook
+namespace WebAPI.Applications.BookOperations.Commands.CreateBook
 {
     public class CreateBookCommand
     {

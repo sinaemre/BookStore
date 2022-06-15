@@ -5,14 +5,14 @@ using AutoMapper;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using WebAPI.BookOperations.CreateBook;
-using WebAPI.BookOperations.DeleteBook;
-using WebAPI.BookOperations.GetBooks;
-using WebAPI.BookOperations.UpdateBook;
+using WebAPI.Applications.BookOperations.Commands.CreateBook;
+using WebAPI.Applications.BookOperations.Commands.DeleteBook;
+using WebAPI.Applications.BookOperations.Queries.GetBooks;
+using WebAPI.Applications.BookOperations.Commands.UpdateBook;
 using WebAPI.DbOperations;
-using static WebAPI.BookOperations.CreateBook.CreateBookCommand;
-using static WebAPI.BookOperations.GetBooks.GetByIdQuery;
-using static WebAPI.BookOperations.UpdateBook.UpdateBookCommand;
+using static WebAPI.Applications.BookOperations.Commands.CreateBook.CreateBookCommand;
+using static WebAPI.Applications.BookOperations.Queries.GetBooks.GetByIdQuery;
+using static WebAPI.Applications.BookOperations.Commands.UpdateBook.UpdateBookCommand;
 
 namespace WebAPI.AddControllers
 {
